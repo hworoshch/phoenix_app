@@ -1,18 +1,29 @@
-# PhoenixApp
+## Dockerized PhoenixApp
 
-To start your Phoenix server:
+Run container:
+```bash
+docker-compose up -d --build 
+```
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+Run iex remote:
+```bash
+docker exec -it phoenix_web bin/phoenix_app remote
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Check log level:
+```elixir
+Logger.level()
+# :info
+```
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Change log level:
+```elixir
+Logger.configure(level: :debug)
+# :ok
+```
 
-## Learn more
-
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
+Check new log level:
+```elixir
+Logger.level()
+# :debug
+```
